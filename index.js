@@ -40,10 +40,9 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
 */
 
 
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
+function kopyala(orijinalTatlar){
+  return Array.from (orijinalTatlar);
 }
-
 
 /* Görev 2:
 Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları kabul etmelidir:
@@ -55,12 +54,16 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 Örneğin: dizi25Cesit(orijinalTatlar) kodunuz düzgün çalışıyorsa true değerini döndürür.
 */
 
-
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
+function dizi25Cesitmi(orijinalTatlar) {
+  if (orijinalTatlar.length !== 25) {
+    return false;
+  }
+  const uniqueElements = new Set(orijinalTatlar);
+  if (uniqueElements.size !== 25) {
+    return false;
+  }
+  return true;
 }
-
-
 /* Görev 3:
 Pastane sahibi size yeni bir lezzet fikriyle geldi: Kakule! Bunun da çok tutacağından çok emin. Bu lezzeti eklemek için diziyi değiştirmeniz gerekir.
 
@@ -73,11 +76,11 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
   Örneğin: cesitEkle(orijinalTatlar, "Kakule") işlevi doğru çalıştığında ["Kakule", "Muz",..."Vanilya"] şeklinde dönmelidir
 */
 
-
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
+function cesitEkle(orijinalTatlar , yeniTat){
+  orijinalTatlar.unshift(yeniTat);
+  return orijinalTatlar
+  
 }
-
 
 /* Cörev 4:
 
@@ -92,8 +95,9 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
 */
 
 
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
+function sonCesitiKaldir(orijinalTatlar){
+  orijinalTatlar.pop();
+  return orijinalTatlar
 }
 
 
@@ -108,10 +112,9 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
 
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
+function indekstekiCesitiGetir(orijinalTatlar,index){
+  return orijinalTatlar[index];
 }
-
 
 /* Görev 6:
 
@@ -128,8 +131,12 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
 
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreCesitCikar(orijinalTatlar,lezzetAdi){
+  let index = orijinalTatlar.indexOf(lezzetAdi);
+  if (index!==-1) {
+    orijinalTatlar.splice(index,1)
+  }
+  return orijinalTatlar
 }
 
 
@@ -154,9 +161,17 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
 */
 
 
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreFiltrele(orijinalTatlar,filtre){
+  let filtrelenmisTatlar = [];
+for(let i = 0; i < orijinalTatlar.length; i++){
+if(orijinalTatlar[i].includes(filtre)){
+filtrelenmisTatlar.push(orijinalTatlar[i]);
 }
+}
+return filtrelenmisTatlar;
+}
+
+
 
 
 
@@ -173,9 +188,14 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
 */
 
 function ortalamaKelimeSayisi(/*kod buraya*/){
-  /*kod buraya*/
+  let filtrelenmisTatlar = [];
+for(let i = 0; i < tatlar.length; i++){
+if(tatlar[i].includes(filtre)){
+filtrelenmisTatlar.push(tatlar[i]);
 }
-
+}
+return filtrelenmisTatlar;
+}
 
 /* ALIŞTIRMA 2:
 Firma mevcut tatların yanında artık mevsimlik lezzetler ve hatta bölgesel lezzetler de sunmaktadır. Toplam 25 lezzet aromasını
